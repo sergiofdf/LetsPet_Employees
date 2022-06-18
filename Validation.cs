@@ -33,5 +33,30 @@ namespace LetsPet_Employees
             }
             return true;
         }
+
+        public static bool IsEmailValid(string email)
+        {
+            Regex RgxEmail = new(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            if(!RgxEmail.Match(email).Success)
+            {
+                Console.WriteLine("Email digitado inválido! \nDigite no formato abcd@abcd.com ");
+                return false;
+            }
+            return true;
+        }
+
+        public static bool IsRandomKeyValid(string randomKey)
+        {
+            Regex RgxRandKey = new(@"^(\w+${8})\-(\w+${4})\-(\w+${4})\-(\w+${4})\-(\w+${12})");
+            if (!RgxRandKey.Match(randomKey).Success)
+            {
+                Console.WriteLine("Chave aleatóroa inválida! \nDigiget no formato ********-****-****-****-************");
+                return false;
+            }
+            return true;
+        }
+
+
+       
     }
 }
