@@ -23,5 +23,15 @@ namespace LetsPet_Employees
             }
             return true;
         }
+        public static bool IsCpfValid(string cpf)
+        {
+            Regex RgxCpf = new(@"^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$");
+            if (!RgxCpf.Match(cpf).Success)
+            {
+                Console.WriteLine("Cpf digitado inválido!\nDigite no formato 123.123.123-12");
+                return false;
+            }
+            return true;
+        }
     }
 }
