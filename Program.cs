@@ -1,3 +1,3 @@
 ﻿using LetsPet_Employees;
 
-var NovoContato = new Contact();
+Console.WriteLine(Validation.IsPhoneValid("(12)91234 1234"));
