@@ -56,7 +56,69 @@ namespace LetsPet_Employees
             return true;
         }
 
+        /* Render Functions 
+       Render questions, validate if the input is valid and return value.
+        */
+        public static string ValidateStringInput(string question, string ErrorMessage = "O input é inválido")
+        {
+            string response;
+            bool validation;
+            do
+            {
+                Console.WriteLine(question);
+                response = Console.ReadLine();
+                validation = string.IsNullOrWhiteSpace(response);
 
-       
+                if (validation)
+                {
+                    Console.WriteLine(ErrorMessage);
+                }
+            } while (validation);
+
+            return response;
+        }
+        public static int ValidatePositiveIntInput(string question, string ErrorMessage = "O input é inválido")
+        {
+            int response;
+            bool validation;
+            do
+            {
+                Console.WriteLine(question);
+                validation = !int.TryParse(Console.ReadLine(), out response) || response <= 0;
+
+                if (validation)
+                {
+                    Console.WriteLine(ErrorMessage);
+                }
+            } while (validation);
+            return response;
+        }
+        public static string ValidateZipCodeInput(string question, string ErrorMessage = "Cep digitado inválido!\nDigite o CEP no formato xxxxx-xxx")
+        {
+            string response;
+            do
+            {
+                response = ValidateStringInput(question, ErrorMessage);
+            } while (!IsZipCodeValid(response));
+            return response;
+        }
+        public static string ValidatePhoneInput(string question, string ErrorMessage = "Telefone digitado inválido!\nDigite no formato (12)12345-1234")
+        {
+            string response;
+            do
+            {
+                response = ValidateStringInput(question, ErrorMessage);
+            } while (!IsPhoneValid(response));
+            return response;
+        }
+        public static string ValidadeEmailInput(string question, string ErrorMessage = "Email digitado inválido! \nDigite no formato abcd@abcd.com")
+        {
+            string response;
+            do
+            {
+                response = ValidateStringInput(question, ErrorMessage);
+            } while (!IsEmailValid(response));
+            return response;
+        }
     }
 }
